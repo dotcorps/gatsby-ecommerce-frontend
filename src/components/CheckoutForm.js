@@ -3,6 +3,7 @@ import React,{useEffect, useState} from "react"
 import {useStripe, useElements, CardElement} from "@stripe/react-stripe-js"
 import { useContext } from "react"
 import { CartContext } from "../context/CartContext"
+import {API_URL} from "../utils/url"
 
 const Card_Styles ={
    style:{
@@ -66,7 +67,7 @@ export default() =>{
             shipping_zip,
             cart  
         }
-       const response = await fetch('http://localhost:1337/orders',{
+       const response = await fetch(`${API_URL}`,{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -84,7 +85,7 @@ export default() =>{
     useEffect(() =>{
         const loadToken = async () =>{
             setLoading(true)
-            const response=await fetch('http://localhost:1337/orders/payment', {
+            const response=await fetch(`${API_URL}/orders/payment`, {
                 method:'POST',
                 headers:{
                     'Content-Type': 'application/json'
