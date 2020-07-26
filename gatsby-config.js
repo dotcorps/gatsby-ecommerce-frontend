@@ -1,10 +1,20 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `SUSAGRI  E-Commerce Demo`,
+    description: `Designed, Developed and hosted by DOTCORPS.`,
+    author: `@Krishna`,
   },
   plugins: [
+    `gatsby-source-strapi`,
+    {
+    resolve: `gatsby-source-strapi`,
+     options: {
+      apiURL:process.env.API_URL || `http://localhost:1337`,
+      queryLimit: 1000, // Default to 100
+      contentTypes: [`product`] 
+    },
+  },
+
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
